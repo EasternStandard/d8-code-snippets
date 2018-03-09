@@ -1,8 +1,8 @@
 # Node: Get top most menu link parent
+
 This function returns the top most menu link parent of the node.
 
-
-```
+```php
 function get_parent_menu_title($node_id) {
   $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
 
@@ -28,5 +28,6 @@ function get_parent_menu_title($node_id) {
   return '';
 }
 ```
+
 
 
