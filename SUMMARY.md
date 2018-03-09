@@ -2,7 +2,7 @@
 
 ## Overview
 
-* [My Awesome API](README.md)
+* [Overview](README.md)
 
 ## Code Snippets
 
