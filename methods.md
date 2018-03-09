@@ -1,30 +1,32 @@
-# Defining Methods
+# Node: Get top most menu link parent
+This function returns the top most menu link parent of the node.
 
-Methods allow you to smoothly display code examples in different languages.
 
-{% method %}
-## My first method
+```
+function get_parent_menu_title($node_id) {
+  $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
 
-My first method exposes how to print a message in JavaScript and Go.
+  if ($node_id) {
+    $menu_link = $menu_link_manager->loadLinksByRoute('entity.node.canonical', array('node' => $node_id));
+  }
+  else {
+    return '';
+  }
 
-{% sample lang="js" %}
-Here is how to print a message to `stdout` using JavaScript.
+  if (is_array($menu_link) && count($menu_link)) {
+    $menu_link = reset($menu_link);
 
-```js
-console.log('My first method');
+    if ($menu_link->getParent()) {
+      $parents = $menu_link_manager->getParentIds($menu_link->getParent());
+      $parent = end($parents);
+      $title = $menu_link_manager->createInstance($parent)->getTitle();
+
+      return $title;
+    }
+  }
+
+  return '';
+}
 ```
 
-{% sample lang="go" %}
-Here is how to print a message to `stdout` using Go.
 
-```go
-fmt.Println("My first method")
-```
-
-{% common %}
-Whatever language you are using, the result will be the same.
-
-```bash
-$ My first method
-```
-{% endmethod %}

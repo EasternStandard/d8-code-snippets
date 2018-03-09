@@ -4,6 +4,7 @@
 
 * [My Awesome API](README.md)
 
-## Methods
+## Code Snippets
 
-* [Defining Methods](methods.md)
+* [Node: Get Top Most Parent](methods.md)
+
