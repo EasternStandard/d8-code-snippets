@@ -11,7 +11,7 @@ $current_path = \Drupal::service('path.current')->getPath();
 if (strpos($current_path, 'ENTITY')) {
   $delimiter = "/";
   $delimited_path = explode($delimiter, $current_path);
-  $nid = end($delimited_path);
+  $id = end($delimited_path);
 }
 ```
 
