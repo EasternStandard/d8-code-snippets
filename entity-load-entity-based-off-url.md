@@ -3,8 +3,6 @@
 This snippet returns returns a loaded entity. This can be placed in any Entity preprocess.
 
 ```php
-<?php
-
 // Loads current path.
 $current_path = \Drupal::service('path.current')->getPath();
 
