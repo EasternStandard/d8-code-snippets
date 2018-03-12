@@ -3,7 +3,7 @@
 This snippet returns returns a loaded entity. This can be placed in any Entity preprocess.
 
 ```php
-use Drupal\node\Entity\Entity;
+use Drupal\node\Entity\ENTITY;
 
 
 // Loads current path.
