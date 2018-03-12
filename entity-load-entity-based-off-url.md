@@ -3,6 +3,8 @@
 This snippet returns returns a loaded entity. This can be placed in any Entity preprocess.
 
 ```php
+<?php
+
 // Loads current path.
 $current_path = \Drupal::service('path.current')->getPath();
 
@@ -13,7 +15,6 @@ if (strpos($current_path, 'ENTITY')) {
   $delimited_path = explode($delimiter, $current_path);
   $nid = end($delimited_path);
 }
-
 ```
 
 
