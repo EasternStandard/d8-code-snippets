@@ -11,10 +11,11 @@ $current_path = \Drupal::service('path.current')->getPath();
 if (strpos($current_path, 'ENTITY')) {
   $delimiter = "/";
   $delimited_path = explode($delimiter, $current_path);
-  
+
   //Entity ID
   $id = end($delimited_path);
-  
+
+  // Use appropriate Entity load: Example, use Drupal\node\Entity\Node;
   Entity::load($id);
 }
 ```
