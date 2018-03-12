@@ -3,6 +3,9 @@
 This snippet returns returns a loaded entity. This can be placed in any Entity preprocess.
 
 ```php
+use Drupal\node\Entity\Entity;
+
+
 // Loads current path.
 $current_path = \Drupal::service('path.current')->getPath();
 
@@ -15,7 +18,7 @@ if (strpos($current_path, 'ENTITY')) {
   //Entity ID
   $id = end($delimited_path);
 
-  // Use appropriate Entity load: Example, use Drupal\node\Entity\Node;
+  // Use appropriate Entity load: Example, 
   Entity::load($id);
 }
 ```
