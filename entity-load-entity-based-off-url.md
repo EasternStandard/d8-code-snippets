@@ -2,9 +2,7 @@
 
 This snippet returns returns a loaded entity. This can be placed in any Entity preprocess.
 
-https://api.drupal.org/api/drupal/core%21core.services.yml/service/path.current/8.2.x
-
-
+[https://api.drupal.org/api/drupal/core!core.services.yml/service/path.current/8.2.x](https://api.drupal.org/api/drupal/core!core.services.yml/service/path.current/8.2.x)
 
 ```php
 use Drupal\node\Entity\ENTITY;
@@ -22,7 +20,7 @@ function preprocess_function() {
     //Entity ID
     $id = end($delimited_path);
 
-    // Use appropriate Entity load: Example, 
+    // Use appropriate Entity load: Example,  Node::load($id)
     Entity::load($id);
   }
 }
