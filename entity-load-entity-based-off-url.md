@@ -2,12 +2,6 @@
 
 This snippet returns returns a loaded entity. This can be placed in any Entity preprocess.
 
-[https://api.drupal.org/api/drupal/core!core.services.yml/service/path.current/8.2.x](https://api.drupal.org/api/drupal/core!core.services.yml/service/path.current/8.2.x)
-
-https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21Entity.php/function/Entity%3A%3Aload/8.2.x
-
-
-
 ```php
 use Drupal\node\Entity\ENTITY;
 
@@ -17,7 +11,7 @@ function preprocess_function() {
 
   // If path contains the entity I am seeking: Node, Taxonomy, etc.
 
-  if (strpos($current_path, 'ENTITY')) {
+  if (strpos($current_path, 'ENTITY') !== false) {
     $delimiter = "/";
     $delimited_path = explode($delimiter, $current_path);
 
@@ -29,6 +23,14 @@ function preprocess_function() {
   }
 }
 ```
+
+
+
+#### Reference links:
+
+[https://api.drupal.org/api/drupal/core!core.services.yml/service/path.current/8.2.x](https://api.drupal.org/api/drupal/core!core.services.yml/service/path.current/8.2.x)
+
+[https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Entity!Entity.php/function/Entity%3A%3Aload/8.2.x](https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Entity!Entity.php/function/Entity%3A%3Aload/8.2.x)
 
 
 
