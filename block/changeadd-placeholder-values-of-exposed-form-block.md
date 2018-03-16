@@ -11,7 +11,7 @@ function THEME_preprocess_block(&$variables) {
   if ($block_id == 'BLOCKID') {
     // changes text of submit button
     $variables['content']['actions']['submit']['#value'] = 'Search';
-    
+
     // changes placeholder text of text field
     // search_api_fulltext is the field name of the text field. Replace with appropriate field name.
     $variables['content']['search_api_fulltext']['#placeholder']= 'Enter Keywords';
