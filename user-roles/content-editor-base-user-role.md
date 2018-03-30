@@ -7,7 +7,7 @@ Capabilities include:
 * Adding and removing taxonomy terms.
 * Access to menus and abilities to add and remove menu items.
 
-```
+```yaml
 uuid: 1e4ca2df-e2eb-4a13-aa70-3279956e38db
 langcode: en
 status: true
@@ -78,7 +78,6 @@ permissions:
   - 'view own unpublished content'
   - 'view primary_landing_page revisions'
   - 'view the administration theme'
-
 ```
 
 
