@@ -20,6 +20,10 @@
 
 * [Traversable Menu menu.html.twig Template](menu/traversable-menu-menuhtmltwig-template.md)
 
+## URL Modifications
+
+* [PathAuto Manipulation](url-modifications/pathauto-manipulation.md)
+
 ## User Roles
 
 * [Content Editor Base User Role](user-roles/content-editor-base-user-role.md)
