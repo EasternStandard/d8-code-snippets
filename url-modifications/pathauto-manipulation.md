@@ -22,17 +22,17 @@ function MODULE_pathauto_pattern_alter(&$pattern, array $context) : void
 {
   if ($context['module'] == 'node' && !empty($context['data']['node'])) {
     $node = $context['data']['node'];
-    
+
     if ($node->hasField('field_taxonomy_reference')) {
       $primary = $node->get('field_taxonomy_reference');
-      
+
       // let form validation handle it if they forgot to set the primary department
       if (!$primary->isEmpty()) {
         $tid = (int) $primary->getString();
         $term = \_MODULE_get_root_term($tid);
-        
+
         $name = \strtolower($term->getName());
-        
+
         // the check is on the taxonomy name, not the sanitized pathauto string, so keep in spaces, ampersands, etc.
         if ($name === 'example str') {
           // if the pattern does not start with the token, the regex pattern here will need to be changed
@@ -44,7 +44,7 @@ function MODULE_pathauto_pattern_alter(&$pattern, array $context) : void
           if ($check === false) {
             $code = \preg_last_error();
             $message = \_MODULE_preg_errtxt($code);
-            
+
             \Drupal::logger('MODULE')->error('Error matching pattern (' . $code . '): ' . $message);
             return;
           }
@@ -54,9 +54,9 @@ function MODULE_pathauto_pattern_alter(&$pattern, array $context) : void
           if (\strpos($new_pattern, '[') === false) {
             $new_pattern = \implode('/', [end($matches), '[node:title]']);
           }
-          
+
           $new_pattern = \str_replace('//', '/', $new_pattern);
-          
+
           if ($check === 0 || \empty($new_pattern)) {
             \Drupal::logger('MODULE')->error('Unable to modify pattern: ' . $pattern->getPattern());
           } else {
@@ -107,7 +107,7 @@ function _MODULE_preg_errtxt($errcode)
   if (!\isset($errtxt)) {
     $errtext = [];
     $constants = \get_defined_constants(true);
-    
+
     foreach ($constants['pcre'] as $c => $n) {
       if (\preg_match('/_ERROR$/', $c)) {
         $errtext[$n] = $c;
@@ -117,10 +117,7 @@ function _MODULE_preg_errtxt($errcode)
 
   return \array_key_exists($errcode, $errtext) ? $errtext[$errcode] : null;
 }
-
 ```
-
-
 
 
 
