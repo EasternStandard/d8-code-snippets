@@ -2,7 +2,7 @@
 
 This snippet is an example of how to modify pathauto patterns before they are processed and saved.
 
-```
+```php
 <?php
 
 use Drupal\taxonomy\Entity\Term;
@@ -119,6 +119,8 @@ function _MODULE_preg_errtxt($errcode)
 }
 
 ```
+
+
 
 
 
