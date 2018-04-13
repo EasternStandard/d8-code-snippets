@@ -1,10 +1,10 @@
-# Node: Get top most menu link parent
+# Node: Get Top Most Parent
 
 This function returns the top most menu link parent of the node.
 
 MenuLinkManager documentation:
 
-[https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Menu%21MenuLinkManager.php/class/MenuLinkManager/8.2.x](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Menu%21MenuLinkManager.php/class/MenuLinkManager/8.2.x)
+[https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Menu%21MenuLinkManager.php/class/MenuLinkManager/8.2.x](https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Menu!MenuLinkManager.php/class/MenuLinkManager/8.2.x)
 
 ```php
 function get_parent_menu_title($node_id) {
@@ -34,6 +34,4 @@ function get_parent_menu_title($node_id) {
   return '';
 }
 ```
-
-
 

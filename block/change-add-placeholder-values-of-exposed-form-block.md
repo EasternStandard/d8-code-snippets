@@ -19,5 +19,3 @@ function THEME_preprocess_block(&$variables) {
 }
 ```
 
-
-

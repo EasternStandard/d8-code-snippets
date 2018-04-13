@@ -1,4 +1,4 @@
-# Base content editor user role
+# Content Editor Base User Role
 
 Capabilities include:
 
@@ -79,6 +79,4 @@ permissions:
   - 'view primary_landing_page revisions'
   - 'view the administration theme'
 ```
-
-
 

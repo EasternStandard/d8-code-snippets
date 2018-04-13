@@ -1,4 +1,4 @@
-# Traversable Menu - Template Set Up and Configuration
+# Traversable Menu menu.html.twig Template
 
 ## Download latest version of traversable Menu
 
@@ -10,7 +10,7 @@ If there are any uses relating to the traversable menu, please open an issue in 
 
 Apply this template to a theme suggested menu.html.twig.
 
-```twig
+```text
 {#
 /**
  * @file
@@ -98,12 +98,11 @@ Apply this template to a theme suggested menu.html.twig.
   </div>
   {% endif %}
 {% endmacro %}
-
 ```
 
 ## Initialize traversable menu in your JS file; modify any configurations if using custom classes
 
-```js
+```javascript
 'use strict';
 
 import TraversableMenu from './vendor/traversable_menu.js';
@@ -125,8 +124,5 @@ Drupal.behaviors.CHANGE_ME = {
     });
   }
 }
-
 ```
-
-
 

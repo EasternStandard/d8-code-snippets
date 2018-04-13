@@ -1,24 +1,26 @@
-# Summary
+# Table of contents
+
+* [Introduction](README.md)
 
 ## Overview
 
-* [Overview](README.md)
+* [Overview](overview/overview.md)
 
 ## Entity Wide
 
-* [Entity: Load Entity based off URL](entity-load-entity-based-off-url.md)
+* [Entity: Load Entity based off URL](entity-wide/entity-load-entity-based-off-url.md)
 
 ## Block
 
-* [Change/add placeholder values of Exposed Form Block](block/changeadd-placeholder-values-of-exposed-form-block.md)
+* [Change/add placeholder values of Exposed Form Block](block/change-add-placeholder-values-of-exposed-form-block.md)
 
 ## Node
 
-* [Node: Get Top Most Parent](methods.md)
+* [Node: Get Top Most Parent](node/node-get-top-most-parent.md)
 
 ## Menu
 
-* [Traversable Menu menu.html.twig Template](menu/traversable-menu-menuhtmltwig-template.md)
+* [Traversable Menu menu.html.twig Template](menu/traversable-menu-menu.html.twig-template.md)
 
 ## URL Modifications
 
@@ -27,8 +29,6 @@
 ## User Roles
 
 * [Content Editor Base User Role](user-roles/content-editor-base-user-role.md)
-
-## Local Environment
 
 ## Twig
 

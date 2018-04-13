@@ -1,4 +1,4 @@
-# Load current path entity based on current URL
+# Entity: Load Entity based off URL
 
 This snippet returns returns a loaded entity. This can be placed in any Entity preprocess.
 
@@ -24,13 +24,9 @@ function preprocess_function() {
 }
 ```
 
-
-
-#### Reference links:
+## Reference links:
 
 [https://api.drupal.org/api/drupal/core!core.services.yml/service/path.current/8.2.x](https://api.drupal.org/api/drupal/core!core.services.yml/service/path.current/8.2.x)
 
 [https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Entity!Entity.php/function/Entity%3A%3Aload/8.2.x](https://api.drupal.org/api/drupal/core!lib!Drupal!Core!Entity!Entity.php/function/Entity%3A%3Aload/8.2.x)
-
-
 
