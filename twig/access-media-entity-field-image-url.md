@@ -13,7 +13,7 @@ Notes: This uses the `node` object that is available in the `node.html.twig` tem
 node.FIELD_MEDIA_ENTITY.entity.FIELD_IMAGE_FIELD_IN_MEDIA_ENTITY.entity.getFileUri
 ```
 
-This can be couple with the `twig`tweak module's `image_style` filter to generate a image\_style URL_._
+This can be couple with the `twigtweak` module's `image_style` filter to generate a image\_style URL_._
 
 ```markup
 {{ node.FIELD_MEDIA_ENTITY.entity.FIELD_IMAGE_FIELD_IN_MEDIA_ENTITY.entity.getFileUri|image_style('IMAGE_STYLE') }}
