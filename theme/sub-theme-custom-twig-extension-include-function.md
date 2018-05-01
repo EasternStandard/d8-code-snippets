@@ -122,7 +122,7 @@ class Theme_Include_Twig_Extension extends \Twig_Extension {
 
 ### The Result
 
-Now in our Twig templates we can use the Twig function `theme_include()` like so:
+Install the module and now we can use `theme_include()` in our Twig templates like so:
 
 ```php
 <header>
