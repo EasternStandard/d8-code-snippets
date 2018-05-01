@@ -33,7 +33,8 @@
 ## Twig
 
 * [Access Media Entity field image URL](twig/access-media-entity-field-image-url.md)
-* Sub Theme Custom Twig Extension Include Function
 
 ## Theme
+
+* Sub Theme Custom Twig Extension Include Function
 
