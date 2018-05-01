@@ -120,3 +120,19 @@ class Theme_Include_Twig_Extension extends \Twig_Extension {
 }
 ```
 
+### The Result
+
+Now in our Twig templates we can use the Twig function `theme_include()` like so:
+
+```php
+<header>
+    {{ theme_include('/templates/header/header.html.twig') }}
+</header>
+```
+
+{% hint style="info" %}
+The path should start from within the theme directory.
+{% endhint %}
+
+
+
