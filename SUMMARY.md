@@ -36,5 +36,5 @@
 
 ## Theme
 
-* Sub Theme Custom Twig Extension Include Function
+* [Sub Theme Custom Twig Extension Include Function](theme/sub-theme-custom-twig-extension-include-function.md)
 
