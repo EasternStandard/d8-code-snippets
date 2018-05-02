@@ -4,53 +4,29 @@ description: How to handle twig includes with sub theme overrides.
 
 # Sub Theme Custom Twig Extension Include Function
 
-### Setting Preprocess Variables
-
-In the main theme file, define the parent theme name and the parent theme path explicitly. Then programmatically get the current theme name and compare it to the defined parent theme name. If they are different, set the sub theme variables.
-
-```php
-function penn_global_preprocess(array &$vars, $hook) {
-
-  // Set the parent theme variables.
-  $vars['parent_theme'] = 'penn_global';
-  $vars['parent_theme_path'] = 'themes/custom/' . $vars['parent_theme'];
-  
-  // Get the theme name.
-  $sub_theme_name = \Drupal::service('theme.manager')->getActiveTheme()->getName();
-  
-  // If the theme name is not the same as the defined parent theme name.
-  if($sub_theme_name != $vars['parent_theme']) {
-    // Set the sub theme variables.
-    $vars['sub_theme'] = $sub_theme_name;
-    $vars['sub_theme_path'] = 'themes/custom/' . $vars['sub_theme'];
-  }
-
-}
-```
-
 ### Module File Structure
 
-Now create the module that will contain the Twig Extension. The folder structure will end up looking similar to this:
+Create the module that will contain the Twig Extension. The folder structure should  this:
 
-* penn\_global\_twig\_theme\_include
-  * penn\_global\_twig\_theme\_include.info.yml
-  * penn\_global\_twig\_theme\_include.services.yml
+* twig\_extension\_theme\_include
+  * twig\_extension\_theme\_include.info.yml
+  * twig\_extension\_theme\_include.services.yml
   * src
     * Theme\_Include\_Twig\_Extension.php
 
-### Info File _\(penn\_global\_twig\_theme\_include.info.yml\)_
+### Info File _\(twig\_extension\_theme\_include.info.yml\)_
 
 The info.yml file can be simple, nothing crazy required here.
 
 ```yaml
-name: Penn Global Twig Theme Include
-description: Adds a custom Twig include function for working with sub-themes
-package: Penn Global
+name: Twig Extension Theme Include
+description: Extends Twig core with a custom include function for proper file overrides when working with sub themes.
+package: Custom
 type: module
 core: 8.x
 ```
 
-### Services File _\(penn\_global\_twig\_theme\_include.services.yml\)_
+### Services File _\(twig\_extension\_theme\_include.services.yml\)_
 
 This is part of what is required to add an extension to Twig. That's about all I know, maybe someone more knowledgeable on services can add some info here. 
 
@@ -59,9 +35,9 @@ I included the syntax in comments above confusing lines.
 ```yaml
 services:
   # [module-folder-name].[module-class-name]
-  penn_global_twig_theme_include.Theme_Include_Twig_Extension:
+  twig_extension_theme_include.Theme_Include_Twig_Extension:
     # Drupal\[module-folder-name].[module-class-name]
-    class: Drupal\penn_global_twig_theme_include\Theme_Include_Twig_Extension
+    class: Drupal\twig_extension_theme_include\Theme_Include_Twig_Extension
     tags:
       - { name: twig.extension }
 ```
@@ -73,12 +49,12 @@ Define a class that extends `Twig_Extension` and contains the function logic.
 ```php
 <?php
 
-namespace Drupal\penn_global_twig_theme_include;
+namespace Drupal\twig_extension_theme_include;
 
 class Theme_Include_Twig_Extension extends \Twig_Extension {
 
 	public function getName() {
-		return 'penn_global_twig_theme_include.theme_include_twig_extension';
+		return 'twig_extension_theme_include.theme_include_twig_extension';
 	}
 
 	public function getFunctions() {
@@ -90,30 +66,43 @@ class Theme_Include_Twig_Extension extends \Twig_Extension {
 
 	public function theme_include(\Twig_Environment $env, $context, $template, $variables = array(), $withContext = true, $ignoreMissing = false, $sandboxed = false) {
 
-		// If a sub theme exists.
-		if($context['sub_theme']) {
-			// Get the sub theme path.
-			$sub_theme_file_path = $context['sub_theme_path'] . $template;
-			// If the file exists.
-			if(file_exists($sub_theme_file_path)) {
+		// Initiate an array of the active and parent themes.
+		$active_themes = array();
+
+		// Get the active theme.
+		$active_theme = \Drupal::service('theme.manager')->getActiveTheme();
+		// Append the active theme to the array of all active themes (including parents).
+		array_push($active_themes, $active_theme);
+
+		// Set a variable to hold the current theme as we loop through. Set initially to the active theme.
+		$loop_theme = $active_theme;
+		// While the current loop theme has a base theme.
+		while($loop_theme->getBaseThemes()) {
+			// Set the loop theme to the base theme.
+			$loop_theme = array_shift(array_values($loop_theme->getBaseThemes()));
+			// Add the base theme to the array of active themes.
+			array_push($active_themes, $loop_theme);
+		}
+
+		// For each item in array.
+		for($i = 0; $i < count($active_themes); $i++) {
+			// Set the theme to a variable.
+			$current_theme = $active_themes[$i];
+			// Get the path to the current theme.
+			$theme_path = $current_theme->getPath();
+			// Build the path to the file in the current theme.
+			$theme_file_path = $theme_path . '/' . $template;
+			// If the file exists in the current theme.
+			if(file_exists($theme_file_path)) {
 				// Call the default twig include function.
-				return twig_include($env, $context, $sub_theme_file_path, $variables, $withContext, $ignoreMissing, $sandboxed);
+				return twig_include($env, $context, $theme_file_path, $variables, $withContext, $ignoreMissing, $sandboxed);
 			}
 		}
 
-		// If a parent theme exists.
-		if($context['parent_theme']) {
-			// Get the parent theme path.
-			$parent_theme_file_path = $context['parent_theme_path'] . $template;
-			// If the file exists.
-			if(file_exists($parent_theme_file_path)) {
-				// Call the default twig include function.
-				return twig_include($env, $context, $parent_theme_file_path, $variables, $withContext, $ignoreMissing, $sandboxed);
-			}
-		}
-
-		// No theme has the file.
-		echo 'Missing File: ' . $template;
+		// Generate a path to the file in the active theme.
+		$active_theme_path = $active_theme->getPath() . $template;
+		// No active theme has the file, but we pass the path into the twig include as if the file existed in the active theme directory (let the core twig function handle it).
+		return twig_include($env, $context, $active_theme_path, $variables, $withContext, $ignoreMissing, $sandboxed);
 
 	}
 
@@ -126,12 +115,12 @@ Install the module and now we can use `theme_include()` in our Twig templates li
 
 ```php
 <header>
-    {{ theme_include('/templates/header/header.html.twig') }}
+    {{ theme_include('templates/header/header.html.twig') }}
 </header>
 ```
 
 {% hint style="info" %}
-The path should start from within the theme directory.
+Paths should be relative to the theme directory.
 {% endhint %}
 
 
