@@ -100,7 +100,7 @@ class Theme_Include_Twig_Extension extends \Twig_Extension {
 		}
 
 		// Generate a path to the file in the active theme.
-		$active_theme_path = $active_theme->getPath() . $template;
+		$active_theme_path = $active_theme->getPath() . '/' . $template;
 		// No active theme has the file, but we pass the path into the twig include as if the file existed in the active theme directory (let the core twig function handle it).
 		return twig_include($env, $context, $active_theme_path, $variables, $withContext, $ignoreMissing, $sandboxed);
 
