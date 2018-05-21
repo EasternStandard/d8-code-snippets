@@ -4,8 +4,10 @@ description: 'Example: prepare a media bundle image of a node in a page preproce
 
 # Prepare a view-mode specific renderable variable in a preprocess function
 
-$node = $vars\['node'\];  
-$vars\['field\_page\_image\_view'\] = $node-&gt;field\_page\_image-&gt;view\('full'\);
+```php
+$node = $vars['node'];
+$vars['field_page_image_view'] = $node->field_page_image->view('full');
+```
 
 
 
