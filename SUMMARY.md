@@ -40,5 +40,5 @@
 
 ## Preprocess
 
-* Media Viewmode Preprocess
+* [Prepare a view-mode specific renderable variable in a preprocess function](preprocess/media-viewmode-preprocess.md)
 
