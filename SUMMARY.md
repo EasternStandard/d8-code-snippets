@@ -42,3 +42,7 @@
 
 * [Prepare a view-mode specific renderable variable in a preprocess function](preprocess/media-viewmode-preprocess.md)
 
+## Modules
+
+* [Register Custom Template in a Module](modules/register-custom-template-in-a-module.md)
+
