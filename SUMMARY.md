@@ -37,6 +37,7 @@
 ## Theme
 
 * [Sub Theme Custom Twig Extension Include Function](theme/sub-theme-custom-twig-extension-include-function.md)
+* [Local D8 Settings files](theme/local-d8-settings-files.md)
 
 ## Preprocess
 
