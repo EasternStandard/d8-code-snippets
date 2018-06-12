@@ -45,7 +45,8 @@
 ## Modules
 
 * [Register Custom Template in a Module](modules/register-custom-template-in-a-module.md)
-* [Local D8 Settings files](local-d8-settings-files.md)
 
 ## Local Development
+
+* [Local D8 Settings files](local-development/local-d8-settings-files.md)
 
