@@ -37,7 +37,6 @@
 ## Theme
 
 * [Sub Theme Custom Twig Extension Include Function](theme/sub-theme-custom-twig-extension-include-function.md)
-* [Local D8 Settings files](theme/local-d8-settings-files.md)
 
 ## Preprocess
 
@@ -46,4 +45,7 @@
 ## Modules
 
 * [Register Custom Template in a Module](modules/register-custom-template-in-a-module.md)
+* [Local D8 Settings files](local-d8-settings-files.md)
+
+## Local Development
 
