@@ -41,6 +41,7 @@
 ## Preprocess
 
 * [Prepare a view-mode specific renderable variable in a preprocess function](preprocess/media-viewmode-preprocess.md)
+* [Input Suggestions: Originating Block ID](preprocess/input-suggestions-originating-block-id.md)
 
 ## Modules
 
@@ -49,6 +50,4 @@
 ## Local Development
 
 * [Local D8 Settings files](local-development/local-d8-settings-files.md)
-
-## Preprocess Hooks
 
